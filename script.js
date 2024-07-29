@@ -9,11 +9,17 @@ function getComputerChoice(items) {
     return items[Math.floor(Math.random() * items.length)];
 }
 
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => { button.addEventListener('click', () =>{console.log(button.id); 
+    }); 
+}); 
+
 // Takes the human choice and returns it
 function getHumanChoice() {
     let humanChoice = prompt("Rock, Paper, or Scissors?");
     return humanChoice ? humanChoice.toLowerCase() : '';
 }
+
 
 // Plays one round of the game
 function playRound() {
@@ -48,17 +54,27 @@ function playRound() {
     
 
     //Makes the game works 5 times
-    console.log(result);
+    /*console.log(result);
     console.log(`Scores: Player - ${humanScore}, Computer - ${computerScore}`);
 
-    if (humanScore === 5) {
+    if (humanScore) {
+        console.log("You Won the game!");
+    } else if (computerScore) {
+        console.log("Computer won the game!");
+    } else {
+        console.log("The game goes on...");
+        playRound(); // Recursive call to continue the game
+    }
+
+    /*if (humanScore === 5) {
         console.log("You Won the game!");
     } else if (computerScore === 5) {
         console.log("Computer won the game!");
     } else {
         console.log("The game goes on...");
         playRound(); // Recursive call to continue the game
-    }
+    }*/
+
 }
 
 // Start the game when the window loads

@@ -1,0 +1,30 @@
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 3rem;
+    color: rgba(27, 27, 27, 0.925);
+}
+
+.choices {
+    margin-bottom: 30px;
+}
+
+.choices button {
+    font-size: 7rem;
+    min-height: 160px;
+    margin: 0 10px;
+    border-radius: 25px;
+    background-color: rgb(109, 131, 255);
+    cursor: pointer;
+    transition: background-color 0.6s ease;
+}
+
+.choices button:hover {
+    background-color: rgb(0, 0, 255);
+}
