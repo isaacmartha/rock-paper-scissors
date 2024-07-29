@@ -11,19 +11,20 @@
     <h1>Rock - Paper - Scissors</h1>
 
     <div class="choices">
-        <button onclick="playround('rock')">🪨</button>
-        <button onclick="playround('paper)">🧻</button>
-        <button onclick="playround('scissors')">✂️</button>
+        <button onclick="playRound('rock')">🪨</button>
+        <button onclick="playRound('paper')">🧻</button>
+        <button onclick="playRound('scissors')">✂️</button>
     </div>
 
-    <div id="playerDisplay">
-        PLAYER:
+    <div id="playerDisplay">PLAYER:</div>
+    <div id="computerDisplay">COMPUTER:</div>
+    <div id="resultDisplay"></div>
+
+    <div class="scoreDisplay">Player Score:
+        <span id="playerScoreDisplay">0</span>
     </div>
-    <div id="computerDisplay">
-        COMPUTER:
-    </div>
-    <div id="resultDisplay">
-        IT'S A TIE
+    <div class="scoreDisplay">Computer Score:
+        <span id="computerScoreDisplay">0</span>
     </div>
 
     <script src="script.js"></script>

@@ -1,81 +1,49 @@
-// Variables and arrays
-let items = ["Rock", "Paper", "Scissors"];
-
-let humanScore = 0;
+const choices = ["rock", "paper", "scissors"];
+const playerDisplay = document.querySelector("#playerDisplay");
+const computerDisplay = document.querySelector("#computerDisplay");
+const resultDisplay = document.querySelector("#resultDisplay");
+const playerScoreDisplay = document.querySelector("#playerScoreDisplay");
+const computerScoreDisplay = document.querySelector("#computerScoreDisplay");
+let playerScore = 0;
 let computerScore = 0;
 
-// Randomize the computer's choice
-function getComputerChoice(items) {
-    return items[Math.floor(Math.random() * items.length)];
-}
+function playRound(playerChoice) {
+    const computerChoice = choices[Math.floor(Math.random() * 3)];
+    let result = "";
 
-const buttons = document.querySelectorAll("button");
-buttons.forEach((button) => { button.addEventListener('click', () =>{console.log(button.id); 
-    }); 
-}); 
-
-// Takes the human choice and returns it
-function getHumanChoice() {
-    let humanChoice = prompt("Rock, Paper, or Scissors?");
-    return humanChoice ? humanChoice.toLowerCase() : '';
-}
-
-
-// Plays one round of the game
-function playRound() {
-    let humanChoice = getHumanChoice();
-    if (humanChoice === '') {
-        console.log("No choice entered. Exiting game.");
-        return;
-    }
-
-    humanChoice = humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1); 
-    let computerChoice = getComputerChoice(items);
-    
-    console.log("Human Choice: " + humanChoice);
-    console.log("Computer Choice: " + computerChoice);
-    
-    let result;
-    if (humanChoice === computerChoice) {
+    if(playerChoice === computerChoice) {
         result = "It's a tie!";
-    } else if (humanChoice === "Rock" && computerChoice === "Scissors") {
-        humanScore++;
-        result = "You win! Rock beats Scissors";
-    } else if (humanChoice === "Paper" && computerChoice === "Rock") {
-        humanScore++;
-        result = "You win! Paper beats Rock";
-    } else if (humanChoice === "Scissors" && computerChoice === "Paper") {
-        humanScore++;
-        result = "You win! Scissors beats Paper";
     } else {
-        computerScore++;
-        result = "You lose!";
-    }
-    
-
-    //Makes the game works 5 times
-    /*console.log(result);
-    console.log(`Scores: Player - ${humanScore}, Computer - ${computerScore}`);
-
-    if (humanScore) {
-        console.log("You Won the game!");
-    } else if (computerScore) {
-        console.log("Computer won the game!");
-    } else {
-        console.log("The game goes on...");
-        playRound(); // Recursive call to continue the game
+        switch(playerChoice) {
+            case "rock":
+                result = (computerChoice === "scissors") ? "You win!" : "You lose!";
+                break;
+            case "paper":
+                result = (computerChoice === "rock") ? "You win!" : "You lose!";
+                break;
+            case "scissors":
+                result = (computerChoice === "paper") ? "You win!" : "You lose!";
+                break;
+        }
     }
 
-    /*if (humanScore === 5) {
-        console.log("You Won the game!");
-    } else if (computerScore === 5) {
-        console.log("Computer won the game!");
-    } else {
-        console.log("The game goes on...");
-        playRound(); // Recursive call to continue the game
-    }*/
+    playerDisplay.textContent = `Player: ${playerChoice}`;	
+    computerDisplay.textContent = `Computer: ${computerChoice}`;	
+    resultDisplay.textContent = result;
+
+
+    resultDisplay.classList.remove("greenText", "redText");
+    switch(result) {
+        case "You win!":
+            resultDisplay.classList.add("greenText");
+            playerScore++;
+            playerScoreDisplay.textContent = playerScore;
+            break;
+        case "You lose!":
+            resultDisplay.classList.add("redText");
+            computerScore++;
+            computerScoreDisplay.textContent = computerScore;
+            break;
+    }   
 
 }
-
-// Start the game when the window loads
-window.onload = playRound;

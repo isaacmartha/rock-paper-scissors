@@ -28,3 +28,27 @@ h1 {
 .choices button:hover {
     background-color: rgb(0, 0, 255);
 }
+
+#playerDisplay, #computerDisplay {
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+
+#resultDisplay {
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 30px 0;
+}
+
+.scoreDisplay {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.greenText, #playerScoreDisplay {
+    color: green;
+}
+
+.redText, #computerScoreDisplay {
+    color: red;
+}
